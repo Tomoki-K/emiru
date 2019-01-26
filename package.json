@@ -2,21 +2,11 @@
   "name": "ermiru",
   "version": "1.0.0",
   "description": "ソウルがシャウトするのです",
-  "main": "lib/index.js",
-  "scripts": {
-    "start:dev": "npm run cleanup && webpack-dev-server",
-    "build": "npm run cleanup && tsc -d --declarationDir ./declarations",
-    "test": "npm run cleanup && tsc && ava --verbose",
-    "cleanup": "rm -f ./declarations/*.d.ts ./lib/*"
-  },
+  "main": "build/server.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Tomoki-K/ermiru.git"
   },
-  "keywords": [
-    "react",
-    "modal"
-  ],
   "author": "Tomoki-K",
   "license": "MIT",
   "devDependencies": {
@@ -49,6 +39,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "react-helmet": "^5.2.0",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1"
   }
