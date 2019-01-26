@@ -1,7 +1,23 @@
 import * as React from 'react';
+import { EmiruForm } from '../../Organisms/EmiruForm';
 
-export class Top extends React.Component {
+interface TopState {
+  text: string;
+}
+
+export class Top extends React.Component<TopState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
+  }
   public render() {
-    return <h1>Top Page</h1>;
+    return(
+      <>
+        <h1>えみるがシャウトするのです</h1>
+        <EmiruForm/>
+      </>
+    );
   }
 }

@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 export const App = ({ route }) => {
   return (
     <>
-      <Helmet title="Isomorphic App"/>
+      <Helmet title="えみるがシャウトするのです"/>
       <main>
         {renderRoutes(route.routes)}
       </main>
