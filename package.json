@@ -26,7 +26,9 @@
     "@webpack-cli/init": "^0.1.2",
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
+    "concurrently": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.18.9",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-test-renderer": "^16.6.3",
@@ -46,6 +48,8 @@
     ]
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "react-router-config": "^4.4.0-beta.6",
+    "react-router-dom": "^4.3.1"
   }
 }

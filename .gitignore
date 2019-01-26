@@ -22,3 +22,5 @@ declarations/
 
 # project
 lib
+build
+public/assets/client.js
