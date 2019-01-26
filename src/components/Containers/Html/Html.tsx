@@ -8,7 +8,7 @@ export const Html = (props) => {
       </head>
       <body>
           <div id="app">{props.children}</div>
-          <script src="/static/bundle.js"/>
+          <script src="/assets/client.js"/>
       </body>
     </html>
   );

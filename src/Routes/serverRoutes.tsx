@@ -12,8 +12,8 @@ export const router = Express.Router();
 router.get('*', (req, res) => {
   const context = {};
   ReactDOMServer.renderToNodeStream(
-        <StaticRouter location={req.url} context={context}>
-            {renderRoutes(routes)}
-        </StaticRouter>,
-    ).pipe(res);
+    <StaticRouter location={req.url} context={context}>
+      {renderRoutes(routes)}
+    </StaticRouter>,
+  ).pipe(res);
 });
