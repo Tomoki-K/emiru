@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint:recommended",
+    "tslint-react"
+  ],
+  "rules": {
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "interface-name": [true, "never-prefix"],
+    "quotemark": [true, "single", "jsx-double"],
+    "semicolon": [true, "always"],
+    "no-unused-variable": [true],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "object-literal-sort-keys": false
+  }
+}

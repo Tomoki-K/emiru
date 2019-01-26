@@ -1,0 +1,51 @@
+{
+  "name": "ermiru",
+  "version": "1.0.0",
+  "description": "ソウルがシャウトするのです",
+  "main": "lib/index.js",
+  "scripts": {
+    "start:dev": "npm run cleanup && webpack-dev-server",
+    "build": "npm run cleanup && tsc -d --declarationDir ./declarations",
+    "test": "npm run cleanup && tsc && ava --verbose",
+    "cleanup": "rm -f ./declarations/*.d.ts ./lib/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Tomoki-K/ermiru.git"
+  },
+  "keywords": [
+    "react",
+    "modal"
+  ],
+  "author": "Tomoki-K",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@webpack-cli/init": "^0.1.2",
+    "ava": "^0.25.0",
+    "browser-env": "^3.2.5",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.6.3",
+    "ts-loader": "^5.2.2",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-react": "^3.6.0",
+    "tsutils": "^3.7.0",
+    "typescript": "^3.1.3",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "ava": {
+    "require": [
+      "./test/helpers/setup-browser-env.js"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
