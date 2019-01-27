@@ -1,0 +1,7 @@
+.TextArea {
+  resize: none;
+  overflow: hidden;
+  padding: var(--spacing-s);
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+}

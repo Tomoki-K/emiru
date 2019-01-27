@@ -1,8 +1,27 @@
+@import '../../Atoms/TextArea';
 @import '../../Molecules/TextOnImage';
+
+#EmiruForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EmiruFormTextarea {
+  width: 250px;
+  min-height: 50px;
+  box-sizing: border-box;
+}
 
 .EmiruFormPreviewText {
   font-family: var(--font-emiru);
   color: var(--color-white);
   white-space: pre;
   letter-spacing: -0.1em;
+}
+
+@media (max-width: 900px) {
+  .EmiruFormTextarea {
+    width: 100%;
+  }
 }

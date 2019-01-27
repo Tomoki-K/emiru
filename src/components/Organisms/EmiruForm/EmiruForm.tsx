@@ -43,12 +43,13 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
   public render() {
     return (
       <>
-        <form>
+        <form id="EmiruForm">
           <TextArea
             value={this.state.text}
             onChange={this.handleTextChange}
             placeholder="何か言うのです"
             className="EmiruFormTextarea"
+            autoGrow={true}
           />
           <Button
             onClick={this.handleFormSubmit}
