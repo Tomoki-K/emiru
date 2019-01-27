@@ -11,7 +11,7 @@ export const Button: React.StatelessComponent<React.Props<{}> & ButtonProps> = (
   return(
     <button
       onClick={onClick}
-      className={['button', className].join(' ')}
+      className={['Button', className].join(' ')}
     >
       {children}
     </button>

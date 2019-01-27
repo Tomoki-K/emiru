@@ -1,4 +1,5 @@
 @import './base';
+@import '../components/Containers/Header';
 
 /* pages */
 @import '../components/Pages/Top';

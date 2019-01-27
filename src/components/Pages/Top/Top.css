@@ -1,1 +1,12 @@
 @import '../../Organisms/EmiruForm';
+
+.TopTitle {
+  font-size: var(--font-xxl);
+  padding-top: var(--spacing-m);
+  padding-bottom: var(--spacing-s);
+  font-weight: bolder;
+}
+.TopSubtitle {
+  font-size: var(--font-m);
+  padding-bottom: var(--spacing-m);
+}

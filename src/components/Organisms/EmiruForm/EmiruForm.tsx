@@ -41,9 +41,17 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
   }
 
   public render() {
+    const { className } = this.props;
     return (
       <>
-        <form id="EmiruForm">
+        <TextOnImage
+          text={this.state.text}
+          title="emiru_bg"
+          filename="emiru.jpeg"
+          className="EmiruFormPreview"
+        />
+        <form id="EmiruForm" className={className}>
+          <p className="EmiruFromDescription">あなたのこころの叫び：</p>
           <TextArea
             value={this.state.text}
             onChange={this.handleTextChange}
@@ -53,17 +61,17 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
           />
           <Button
             onClick={this.handleFormSubmit}
-            className="EmiruFormSubmitButton"
+            className="EmiruFormButton SubmitButton"
           >
-            <span>シャウトする</span>
+            <span>シャウトする (ツイート)</span>
+          </Button>
+          <Button
+            onClick={this.handleFormSubmit}
+            className="EmiruFormButton DownloadButton"
+          >
+            <span>アルバムに保存する</span>
           </Button>
         </form>
-        <TextOnImage
-          text={this.state.text}
-          title="emiru_bg"
-          filename="emiru.jpeg"
-          className="EmiruFormPreview"
-        />
       </>
     );
   }

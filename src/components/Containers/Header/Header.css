@@ -1,0 +1,7 @@
+.HeaderTitle {
+  font-size: var(--font-xxl);
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: var(--spacing-s) 10%;
+  /* text-align: center; */
+}

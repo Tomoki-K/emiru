@@ -1,3 +1,4 @@
+@import '../../Atoms/Button';
 @import '../../Atoms/TextArea';
 @import '../../Molecules/TextOnImage';
 
@@ -7,21 +8,25 @@
   align-items: center;
 }
 
-.EmiruFormTextarea {
-  width: 250px;
-  min-height: 50px;
-  box-sizing: border-box;
+.EmiruFromDescription {
+  font-size: var(--font-m);
+  margin-top: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
 }
-
 .EmiruFormPreviewText {
   font-family: var(--font-emiru);
   color: var(--color-white);
   white-space: pre;
-  letter-spacing: -0.1em;
+  letter-spacing: -0.05em;
 }
-
-@media (max-width: 900px) {
-  .EmiruFormTextarea {
-    width: 100%;
-  }
+.EmiruFormTextarea {
+  width: 100%;
+  min-height: 50px;
+  box-sizing: border-box;
+  margin-bottom: var(--spacing-m);
+}
+.EmiruFormButton {
+  width: 100%;
+  margin-top: var(--spacing-s);
+  font-weight: bold;
 }
