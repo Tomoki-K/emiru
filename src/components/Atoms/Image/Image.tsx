@@ -15,13 +15,15 @@ export const Image: React.StatelessComponent<ImageProps> = (props) => {
   const { filename, title, width, height, className } = props;
 
   return(
-    <img
-      src={`${IMAGE_PATH}/${filename}`}
-      title={`${title} image`}
-      alt={title}
-      width={width}
-      height={height}
-      className={['image', className].join(' ')}
-    />
+    <div className="imageWrapper">
+      <img
+        src={`${IMAGE_PATH}/${filename}`}
+        title={`${title} image`}
+        alt={title}
+        width={width}
+        height={height}
+        className={['image', className].join(' ')}
+      />
+    </div>
   );
 };
