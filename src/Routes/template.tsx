@@ -5,6 +5,7 @@ const template = ({ markup, helmet }) => {
   ${helmet.title.toString()}
   ${helmet.meta.toString()}
   ${helmet.link.toString()}
+  <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body ${helmet.bodyAttributes.toString()}>
   <div id="app">${markup}</div>
