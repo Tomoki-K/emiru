@@ -1,3 +1,62 @@
+@import "normalize.css";
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:900');
+
+/* css vaiables */
+:root {
+  --spacing-xs: 4px;
+  --spacing-s: calc(var(--spacing-xs) * 2); /* 8px */
+  --spacing-m: calc(var(--spacing-xs) * 4); /* 16px */
+  --spacing-l: calc(var(--spacing-xs) * 6); /* 24px */
+  --spacing-xl: calc(var(--spacing-xs) * 8); /* 32px */
+  --spacing-xxl: calc(var(--spacing-xs) * 10); /* 40px */
+
+  --font-emiru: 'M PLUS 1p', sans-serif;
+
+  --font-xs: 1rem;
+  --font-s: 1.2rem;
+  --font-m: 1.4rem;
+  --font-l: 1.6rem;
+  --font-xl: 1.8rem;
+  --font-xxl: 2rem;
+
+  --color-white: #ffffff;
+
+  --animation-quick-fade: linear .2s;
+}
+
+
+/* styles common thoughout app */
+html, body, p, h1, h2, h3, h4, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  font-size: 70%;
+  min-height: 100%;
+}
+
 body {
-  color: blue;
+  font-size: 1.4rem;
+}
+
+section {
+  height: 100vh;
+  background-color: darkgray;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 60%;
+  }
+  main {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

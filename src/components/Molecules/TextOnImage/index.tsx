@@ -1,0 +1,1 @@
+export { TextOnImage } from './TextOnImage';

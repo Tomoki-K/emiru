@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../../Atoms/Button';
-import { Image } from '../../Atoms/Image';
 import { TextArea } from '../../Atoms/TextArea';
+import { TextOnImage } from '../../Molecules/TextOnImage';
 
 type Status = 'STANDBY' | 'SENDING' | 'SUCCESS' | 'FAILURE';
 const StatusMessage: {[x in Status]: string} = {
@@ -36,6 +36,7 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
   public handleFormSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (this.state.text.length === 0) { return; }
+    // tslint:disable-next-line:no-console
     console.log(this.state.text);
   }
 
@@ -56,10 +57,11 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             <span>シャウトする</span>
           </Button>
         </form>
-        <p>{this.state.text}</p>
-        <Image
+        <TextOnImage
+          text={this.state.text}
           title="emiru_bg"
-          fileName="emiru.jpeg"
+          filename="emiru.jpeg"
+          className="EmiruFormPreview"
         />
       </>
     );

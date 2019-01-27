@@ -1,1 +1,4 @@
 @import './base';
+
+/* pages */
+@import '../components/Pages/Top';
