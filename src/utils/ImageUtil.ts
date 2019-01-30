@@ -15,10 +15,23 @@ export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
     // draw text
-    ctx.font = '150px MPLUS1p';
+    const fontSize = 140;
+    ctx.font = `${fontSize}px MPLUS1p`;
     ctx.fillStyle = '#ffffff';
-    const textWidth = ctx.measureText(text).width;
-    ctx.fillText(text, (image.width - textWidth) / 2, image.height / 2);
+    ctx.textBaseline = 'middle';
+    const metric = ctx.measureText(text);
+    const textWidth = metric.width;
+    const textOffsetX = (image.width - textWidth) / 2; // horizontal center
+    const lineCount = (text.match(/\n/g) || []).length;
+    const textOffsetY = (image.height / 2) - lineCount * fontSize * 0.6;
+    // // testing
+    // ctx.beginPath();
+    // ctx.arc(textOffsetX, textOffsetY, 5, 0, Math.PI * 2, false);
+    // ctx.fillStyle = '#ff0000';
+    // ctx.fill();
+    // ctx.fillStyle = '#ffffff';
+    // // /testing
+    ctx.fillText(text, textOffsetX, textOffsetY);
 
     // save as jpeg
     canvas.createJPEGStream().pipe(fs.createWriteStream(assetPath(outImagePath)));

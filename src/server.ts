@@ -22,5 +22,5 @@ app.use(router);
 
 server.listen(5000, () => {
   LoggerUtil.log(`App listening on ${config.DOMAIN_URL}`);
-  ImageController.generateEmiruImage('ギュイーンとソウルが\nシャウトするのです\nあばばばば');
+  ImageController.generateEmiruImage('ギュイーンとソウルが\nシャウトするのです');
 });
