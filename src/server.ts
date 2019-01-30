@@ -20,6 +20,6 @@ app.use(bodyParser.json());
 app.use(apiRouter);
 app.use(serverRouter);
 
-server.listen(5000, () => {
+server.listen(config.PORT, () => {
   LoggerUtil.log(`App listening on ${config.DOMAIN_URL}`);
 });
