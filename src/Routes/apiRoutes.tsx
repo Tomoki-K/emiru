@@ -11,14 +11,14 @@ export const apiRouter = Express.Router();
 // [GET] /api/image
 apiRouter.get(
   routePaths.API_IMAGE,
-  (req: Express.Request, res: Express.Response) => {
+  async (req: Express.Request, res: Express.Response) => {
     try {
       const { text } = req.query;
       if (!text) {
         throw new InvalidRequestError('text is a required parameter');
       }
-      ImageController.generateEmiruImage(text);
-      res.status(200).send(); // ok
+      const dataUrl = await ImageController.generateEmiruImage(text);
+      res.status(200).send({ image: dataUrl }); // ok
     } catch (err) {
       if (err instanceof InvalidRequestError) {
         res.status(400).send({ error: err.message });

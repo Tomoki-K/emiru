@@ -29,17 +29,19 @@ const renderText = (context: any, text: string, config: TextConfig) => {
 };
 
 export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string, text: string) => {
-  Canvas.registerFont(assetPath('MPLUS1p-Black.ttf'), { family: 'MPLUS1p' });
-
+  return new Promise((resolve, reject) => {
+    Canvas.registerFont(assetPath('MPLUS1p-Black.ttf'), { family: 'MPLUS1p' });
   // create canvas and draw image
-  const image = new Canvas.Image();
-  image.onerror = (err) => { LoggerUtil.error(err); };
-  image.onload = () => {
+    const image = new Canvas.Image();
+    image.onerror = (err) => { LoggerUtil.error(err); };
+    image.onload = resolve(image);
+    image.src = assetPath(sourceImagePath);
+  }).then((image: any) => {
     const canvas = Canvas.createCanvas(image.width, image.height);
     const ctx = canvas.getContext('2d');
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
-    // draw text
+      // draw text
     const fontSize = 140;
     ctx.font = `${fontSize}px MPLUS1p`;
     ctx.fillStyle = '#ffffff';
@@ -56,11 +58,12 @@ export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string
       offsetY: textOffsetY,
     };
     renderText(ctx, text, config);
-
+    return canvas;
+  }).then((canvas) => {
+    return canvas.toDataURL('base64');
     // save as jpeg
-    canvas.createJPEGStream().pipe(fs.createWriteStream(assetPath(outImagePath)));
-  };
-  image.src = assetPath(sourceImagePath);
+    // canvas.createJPEGStream().pipe(fs.createWriteStream(assetPath(outImagePath)));
+  });
 };
 
 const assetPath = (filename) => {
