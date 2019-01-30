@@ -1,0 +1,10 @@
+.Footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: var(--spacing-xs) 10%;
+  box-sizing: border-box;
+  text-align: center;
+}

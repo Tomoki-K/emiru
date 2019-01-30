@@ -29,8 +29,8 @@
   width: 100%;
   margin-top: var(--spacing-s);
   font-weight: bold;
-  font-size: var(--font-s);
-  line-height: var(--font-s);
+  font-size: var(--font-m);
+  line-height: var(--font-l);
 }
 .EmiruFormButtonIcon {
   margin-right: var(--spacing-xs);

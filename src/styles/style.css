@@ -1,5 +1,6 @@
 @import './base';
 @import '../components/Containers/Header';
+@import '../components/Containers/Footer';
 
 /* pages */
 @import '../components/Pages/Top';
