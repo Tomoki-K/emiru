@@ -83,18 +83,19 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             className="EmiruFormTextarea"
             autoGrow={true}
           />
-          {/* <Button
-            onClick={this.handleFormSubmit}
-            className="EmiruFormButton SubmitButton"
-          >
-            <span>シャウトする (ツイート)</span>
-          </Button> */}
           <Button
             onClick={this.handleDownload}
             className="EmiruFormButton DownloadButton"
             disabled={!this.state.text.replace(/\s/g, '').length}
           >
             <span>アルバムに保存する</span>
+          </Button>
+          <Button
+            onClick={() => 0}
+            className="EmiruFormButton SubmitButton"
+            disabled={true}
+          >
+            <span>シャウトする (準備中)</span>
           </Button>
           <p className={['EmiruFormStatusMessage', this.state.status.toLowerCase()].join(' ')}>
             {StatusMessage[this.state.status]}
