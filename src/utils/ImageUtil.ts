@@ -3,6 +3,31 @@ import * as fs from 'fs';
 import * as path from 'path';
 import LoggerUtil from './LoggerUtil';
 
+interface TextConfig {
+  size: number;
+  lineHeight: number;
+  offsetX: number;
+  offsetY: number;
+}
+
+const renderDot = (context: any, x: number, y: number) => {
+  context.fillStyle = '#ff0000'; // red
+  context.beginPath();
+  context.arc(x, y, 5, 0, Math.PI * 2, false);
+  context.fill();
+  context.fillStyle = '#ffffff';
+};
+
+const renderText = (context: any, text: string, config: TextConfig) => {
+  context.beginPath() ;
+  text.split('\n').forEach((line, i) => {
+    const lineIdx = i - 1;
+    let lineOffset = config.size ;
+    if (lineIdx) { lineOffset += config.size * config.lineHeight * lineIdx ; }
+    context.fillText(line, config.offsetX, config.offsetY + lineOffset) ;
+  });
+};
+
 export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string, text: string) => {
   Canvas.registerFont(assetPath('MPLUS1p-Black.ttf'), { family: 'MPLUS1p' });
 
@@ -23,15 +48,14 @@ export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string
     const textWidth = metric.width;
     const textOffsetX = (image.width - textWidth) / 2; // horizontal center
     const lineCount = (text.match(/\n/g) || []).length;
-    const textOffsetY = (image.height / 2) - lineCount * fontSize * 0.6;
-    // // testing
-    // ctx.beginPath();
-    // ctx.arc(textOffsetX, textOffsetY, 5, 0, Math.PI * 2, false);
-    // ctx.fillStyle = '#ff0000';
-    // ctx.fill();
-    // ctx.fillStyle = '#ffffff';
-    // // /testing
-    ctx.fillText(text, textOffsetX, textOffsetY);
+    const textOffsetY = (image.height / 2) - lineCount * fontSize * 0.5; // vertical center
+    const config: TextConfig = {
+      size: fontSize,
+      lineHeight: 1,
+      offsetX: textOffsetX,
+      offsetY: textOffsetY,
+    };
+    renderText(ctx, text, config);
 
     // save as jpeg
     canvas.createJPEGStream().pipe(fs.createWriteStream(assetPath(outImagePath)));
