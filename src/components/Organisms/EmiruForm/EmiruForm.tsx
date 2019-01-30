@@ -92,6 +92,7 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
           <Button
             onClick={this.handleDownload}
             className="EmiruFormButton DownloadButton"
+            disabled={!this.state.text.replace(/\s/g, '').length}
           >
             <span>アルバムに保存する</span>
           </Button>
