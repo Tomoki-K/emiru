@@ -18,7 +18,7 @@ const template = ({ markup, helmet }) => {
   <meta property="og:locale" content="jp" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@tomotetra" />
-  <meta name="twitter:title" content="Emirutter" />
+  <meta name="twitter:title" content="Emirutter (beta)" />
   <meta name="twitter:description" content="愛崎えみるがあなたの心の叫びを代弁してくれます" />
   <meta name="twitter:image:src" content="${config.DOMAIN_URL}/og_image.jpg" />
   <link rel="stylesheet" href="/assets/style.css">

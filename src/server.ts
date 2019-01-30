@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
 import * as Express from 'express';
 import * as http from 'http';
 
@@ -10,6 +11,12 @@ import LoggerUtil from './utils/LoggerUtil';
 
 export const app = Express();
 const server = http.createServer(app);
+
+app.use(compression({
+  threshold: 0,
+  level: 9,
+  memLevel: 9,
+}));
 
 app.use(Express.static('public'));
 
