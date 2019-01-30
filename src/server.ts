@@ -2,9 +2,8 @@ import * as bodyParser from 'body-parser';
 import * as Express from 'express';
 import * as http from 'http';
 
-import { router } from './Routes/serverRoutes';
-
-import { ImageController } from './controllers/ImageController';
+import { apiRouter } from './Routes/apiRoutes';
+import { serverRouter } from './Routes/serverRoutes';
 
 import config from './config';
 import LoggerUtil from './utils/LoggerUtil';
@@ -18,9 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // routing
-app.use(router);
+app.use(apiRouter);
+app.use(serverRouter);
 
 server.listen(5000, () => {
   LoggerUtil.log(`App listening on ${config.DOMAIN_URL}`);
-  ImageController.generateEmiruImage('ギュイーンとソウルが\nシャウトするのです');
 });

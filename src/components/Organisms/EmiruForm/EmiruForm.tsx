@@ -1,14 +1,18 @@
+import axios from 'axios';
 import * as React from 'react';
+
 import { Button } from '../../Atoms/Button';
 import { TextArea } from '../../Atoms/TextArea';
 import { TextOnImage } from '../../Molecules/TextOnImage';
 
-type Status = 'STANDBY' | 'SENDING' | 'SUCCESS' | 'FAILURE';
+import routePaths from '../../../Routes/routePaths';
+
+type Status = 'STANDBY' | 'SENDING' | 'DOWNLOAD_SUCCESS' | 'FAILURE';
 const StatusMessage: {[x in Status]: string} = {
   STANDBY: '',
-  SENDING: 'Sending...',
-  SUCCESS: 'Your message has been sent!',
-  FAILURE: 'Oops, something went wrong',
+  SENDING: '作成中...',
+  DOWNLOAD_SUCCESS: 'まもなくダウンロードが開始します',
+  FAILURE: '問題が発生しました',
 };
 
 interface EmiruFormProps {
@@ -33,11 +37,21 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
     this.setState({ text: e.currentTarget.value });
   }
 
-  public handleFormSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  public handleDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (this.state.text.length === 0) { return; }
-    // tslint:disable-next-line:no-console
-    console.log(this.state.text);
+    this.setState({ status: 'SENDING' });
+    axios.get(
+      routePaths.API_IMAGE, {
+        params: {
+          text: this.state.text,
+        },
+      },
+    ).then((data) => {
+      this.setState({ status: 'DOWNLOAD_SUCCESS' });
+    }).catch((err) => {
+      this.setState({ status: 'FAILURE' });
+    });
   }
 
   public render() {
@@ -59,18 +73,21 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             className="EmiruFormTextarea"
             autoGrow={true}
           />
-          <Button
+          {/* <Button
             onClick={this.handleFormSubmit}
             className="EmiruFormButton SubmitButton"
           >
             <span>シャウトする (ツイート)</span>
-          </Button>
-          {/* <Button
-            onClick={this.handleFormSubmit}
+          </Button> */}
+          <Button
+            onClick={this.handleDownload}
             className="EmiruFormButton DownloadButton"
           >
             <span>アルバムに保存する</span>
-          </Button> */}
+          </Button>
+          <p className={['EmiruFormStatusMessage', this.state.status.toLowerCase()].join(' ')}>
+            {StatusMessage[this.state.status]}
+          </p>
         </form>
       </>
     );

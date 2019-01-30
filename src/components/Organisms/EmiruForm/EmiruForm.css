@@ -30,3 +30,13 @@
   margin-top: var(--spacing-s);
   font-weight: bold;
 }
+.EmiruFormStatusMessage {
+  margin-top: var(--spacing-m);
+}
+.EmiruFormStatusMessage.download_success {
+  color: var(--color-green);
+}
+.EmiruFormStatusMessage.failure {
+  color: var(--color-red);
+}
+

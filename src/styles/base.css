@@ -21,6 +21,8 @@
 
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-green: #519548;
+  --color-red: #FF6F69;
 
   --animation-quick-fade: linear .2s;
 }

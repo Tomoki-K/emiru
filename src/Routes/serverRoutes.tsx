@@ -9,9 +9,9 @@ import { StaticRouter } from 'react-router-dom';
 import routes from './routes';
 import template from './template';
 
-export const router = Express.Router();
+export const serverRouter = Express.Router();
 
-router.get('*', (req, res) => {
+serverRouter.get('*', (req, res) => {
   const context = {};
   const markup = ReactDOMServer.renderToString(
     <StaticRouter location={req.url} context={context}>

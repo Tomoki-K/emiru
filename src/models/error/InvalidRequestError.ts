@@ -1,0 +1,6 @@
+export default class InvalidRequestError extends Error {
+  constructor(message: string) {
+    super(message);
+    Object.setPrototypeOf(this, InvalidRequestError.prototype);
+  }
+}
