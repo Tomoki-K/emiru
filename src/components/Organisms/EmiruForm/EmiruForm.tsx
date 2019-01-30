@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
+import { FaImage, FaTwitter } from 'react-icons/fa';
 
 import { Button } from '../../Atoms/Button';
 import { TextArea } from '../../Atoms/TextArea';
@@ -88,6 +89,7 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             className="EmiruFormButton DownloadButton"
             disabled={!this.state.text.replace(/\s/g, '').length}
           >
+            <FaImage className="EmiruFormButtonIcon"/>
             <span>アルバムに保存する</span>
           </Button>
           <Button
@@ -95,6 +97,7 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             className="EmiruFormButton SubmitButton"
             disabled={true}
           >
+            <FaTwitter className="EmiruFormButtonIcon"/>
             <span>シャウトする (準備中)</span>
           </Button>
           <p className={['EmiruFormStatusMessage', this.state.status.toLowerCase()].join(' ')}>
