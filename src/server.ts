@@ -4,6 +4,8 @@ import * as http from 'http';
 
 import { router } from './Routes/serverRoutes';
 
+import { ImageController } from './controllers/ImageController';
+
 import config from './config';
 import LoggerUtil from './utils/LoggerUtil';
 
@@ -20,4 +22,5 @@ app.use(router);
 
 server.listen(5000, () => {
   LoggerUtil.log(`App listening on ${config.DOMAIN_URL}`);
+  ImageController.generateEmiruImage('ギュイーンとソウルが\nシャウトするのです\nあばばばば');
 });

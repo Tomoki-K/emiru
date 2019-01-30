@@ -65,12 +65,12 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
           >
             <span>シャウトする (ツイート)</span>
           </Button>
-          <Button
+          {/* <Button
             onClick={this.handleFormSubmit}
             className="EmiruFormButton DownloadButton"
           >
             <span>アルバムに保存する</span>
-          </Button>
+          </Button> */}
         </form>
       </>
     );
