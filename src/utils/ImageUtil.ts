@@ -42,7 +42,7 @@ export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
       // draw text
-    const fontSize = 140;
+    const fontSize = 130;
     ctx.font = `${fontSize}px MPLUS1p`;
     ctx.fillStyle = '#ffffff';
     ctx.textBaseline = 'middle';
