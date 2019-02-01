@@ -13,9 +13,9 @@ import routePaths from '../../../Routes/routePaths';
 type Status = 'STANDBY' | 'SENDING' | 'DOWNLOAD_SUCCESS' | 'FAILURE';
 const StatusMessage: {[x in Status]: string} = {
   STANDBY: '',
-  SENDING: '画像を作成中...',
-  DOWNLOAD_SUCCESS: '上の画像を保存してください！',
-  FAILURE: '問題が発生しました',
+  SENDING: '画像を作成中なのです...',
+  DOWNLOAD_SUCCESS: 'できたのです！\n上の画像を保存するのです',
+  FAILURE: '問題が発生したのです',
 };
 
 interface EmiruFormProps {
@@ -79,7 +79,7 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
       <>
         { this.state.resultBase64 &&
           <Image
-            title="aaa"
+            title={`emiru_${Date.now()}.png`}
             src={this.state.resultBase64}
             className="EmiruFormResult"
           />
@@ -101,6 +101,9 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
             className="EmiruFormTextarea"
             autoGrow={true}
           />
+          <p className={['EmiruFormStatusMessage', this.state.status.toLowerCase()].join(' ')}>
+            {StatusMessage[this.state.status]}
+          </p>
           <Button
             onClick={this.handleDownload}
             className="EmiruFormButton DownloadButton"
@@ -115,9 +118,6 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
           >
             <span>ツイート (準備中)</span>
           </Button>
-          <p className={['EmiruFormStatusMessage', this.state.status.toLowerCase()].join(' ')}>
-            {StatusMessage[this.state.status]}
-          </p>
         </form>
       </>
     );

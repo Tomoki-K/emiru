@@ -20,7 +20,7 @@ export const Image: React.StatelessComponent<ImageProps> = (props) => {
     <div className={guard ? 'guardedImageWrapper' : 'imageWrapper'}>
       <img
         src={src || `${IMAGE_PATH}/${filename}`}
-        title={`${title} image`}
+        title={`${title}`}
         alt={title}
         width={width}
         height={height}

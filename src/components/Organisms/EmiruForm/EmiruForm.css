@@ -26,7 +26,7 @@
   width: 100%;
   min-height: 50px;
   box-sizing: border-box;
-  margin-bottom: var(--spacing-m);
+  margin-bottom: var(--spacing-s);
 }
 .EmiruFormButton {
   width: 100%;
@@ -39,7 +39,8 @@
   margin-right: var(--spacing-xs);
 }
 .EmiruFormStatusMessage {
-  margin-top: var(--spacing-m);
+  white-space: pre;
+  text-align: center;
 }
 .EmiruFormStatusMessage.download_success {
   color: var(--color-green);
