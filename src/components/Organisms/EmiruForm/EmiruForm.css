@@ -17,7 +17,10 @@
   font-family: var(--font-emiru);
   color: var(--color-white);
   white-space: pre;
-  letter-spacing: -0.05em;
+  /* letter-spacing: -0.05em; */
+}
+.EmiruFormResult {
+  width: 100%;
 }
 .EmiruFormTextarea {
   width: 100%;

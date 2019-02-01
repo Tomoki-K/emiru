@@ -44,6 +44,7 @@ export class TextOnImage extends React.Component<TextOnImageProps, TextOnImageSt
           <Image
             title={title}
             filename={filename}
+            guard={true}
             className={`TextOnImageImage ${className}Image`}
           />
         </div>

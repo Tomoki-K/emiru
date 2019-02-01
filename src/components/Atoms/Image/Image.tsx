@@ -2,8 +2,10 @@ import * as React from 'react';
 import config from '../../../config';
 
 interface ImageProps {
-  filename: string;
   title: string;
+  filename?: string;
+  src?: string;
+  guard?: boolean;
   width?: number;
   height?: number;
   className?: string;
@@ -12,12 +14,12 @@ interface ImageProps {
 const IMAGE_PATH = `${config.DOMAIN_URL}/assets/images`;
 
 export const Image: React.StatelessComponent<ImageProps> = (props) => {
-  const { filename, title, width, height, className } = props;
+  const { title, filename, src, guard, width, height, className } = props;
 
   return(
-    <div className="imageWrapper">
+    <div className={guard ? 'guardedImageWrapper' : 'imageWrapper'}>
       <img
-        src={`${IMAGE_PATH}/${filename}`}
+        src={src || `${IMAGE_PATH}/${filename}`}
         title={`${title} image`}
         alt={title}
         width={width}

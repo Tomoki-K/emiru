@@ -41,8 +41,8 @@ export const ImageTextGenerator = (sourceImagePath: string, outImagePath: string
     const ctx = canvas.getContext('2d');
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
-      // draw text
-    const fontSize = 130;
+    // draw text
+    const fontSize = 135;
     ctx.font = `${fontSize}px MPLUS1p`;
     ctx.fillStyle = '#ffffff';
     ctx.textBaseline = 'middle';

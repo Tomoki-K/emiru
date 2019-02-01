@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as React from 'react';
 
 import { Button } from '../../Atoms/Button';
+import { Image } from '../../Atoms/Image';
 import { TextArea } from '../../Atoms/TextArea';
 import { TextOnImage } from '../../Molecules/TextOnImage';
 
@@ -12,8 +13,8 @@ import routePaths from '../../../Routes/routePaths';
 type Status = 'STANDBY' | 'SENDING' | 'DOWNLOAD_SUCCESS' | 'FAILURE';
 const StatusMessage: {[x in Status]: string} = {
   STANDBY: '',
-  SENDING: '作成中...',
-  DOWNLOAD_SUCCESS: 'まもなくダウンロードが開始します',
+  SENDING: '画像を作成中...',
+  DOWNLOAD_SUCCESS: '上の画像を保存してください！',
   FAILURE: '問題が発生しました',
 };
 
@@ -24,6 +25,7 @@ interface EmiruFormProps {
 interface EmiruFormState {
   text: string;
   status: Status;
+  resultBase64: string | null;
 }
 
 export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
@@ -32,19 +34,23 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
     this.state = {
       text: '',
       status: 'STANDBY',
+      resultBase64: '',
     };
   }
 
   public handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    this.setState({ text: e.currentTarget.value });
+    this.setState({
+      text: e.currentTarget.value,
+      resultBase64: null,
+    });
   }
 
-  public saveBase64Image = (base64Data: string, name: string) => {
-    const link = document.createElement('a');
-    link.download = name;
-    link.href = base64Data.replace('image/png', 'image/octet-stream');
-    link.click();
-  }
+  // public saveBase64Image = (base64Data: string, name: string) => {
+  //   const link = document.createElement('a');
+  //   link.download = name;
+  //   link.href = base64Data.replace('image/png', 'image/octet-stream');
+  //   link.click();
+  // }
 
   public handleDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -57,8 +63,11 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
         },
       },
     ).then(({ data }) => {
-      this.setState({ status: 'DOWNLOAD_SUCCESS' });
-      this.saveBase64Image(data.image, `emiru_${Date.now()}.png`);
+      this.setState({
+        status: 'DOWNLOAD_SUCCESS',
+        resultBase64: data.image,
+      });
+      // this.saveBase64Image(data.image, `emiru_${Date.now()}.png`);
     }).catch((err) => {
       this.setState({ status: 'FAILURE' });
     });
@@ -68,12 +77,21 @@ export class EmiruForm extends React.Component<EmiruFormProps, EmiruFormState> {
     const { className } = this.props;
     return (
       <>
-        <TextOnImage
-          text={this.state.text || 'ギュイーンとソウルが\nシャウトするのです'}
-          title="emiru_bg"
-          filename="emiru.jpeg"
-          className="EmiruFormPreview"
-        />
+        { this.state.resultBase64 &&
+          <Image
+            title="aaa"
+            src={this.state.resultBase64}
+            className="EmiruFormResult"
+          />
+        }
+        { !this.state.resultBase64 &&
+          <TextOnImage
+            text={this.state.text || 'ギュイーンとソウルが\nシャウトするのです'}
+            title="emiru_bg"
+            filename="emiru.jpeg"
+            className="EmiruFormPreview"
+          />
+        }
         <form id="EmiruForm" className={className}>
           <p className="EmiruFromDescription">あなたのこころの叫び：</p>
           <TextArea
